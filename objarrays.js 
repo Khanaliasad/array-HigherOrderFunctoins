@@ -1,0 +1,89 @@
+/////////
+const pureArr = [
+  {
+    id: 1,
+    name: "A",
+  },
+  {
+    id: 2,
+    name: "B",
+  },
+  {
+    id: 3,
+    name: "C",
+  },
+  {
+    id: 4,
+    name: "D",
+  },
+];
+const matchArr = [
+  {
+    id: 5,
+    name: "E",
+  },
+  {
+    id: 1,
+    name: "F",
+  },
+  {
+    id: 7,
+    name: "G",
+  },
+  {
+    id: 3,
+    name: "H",
+  },
+];
+//=======================
+const arr = [
+  {
+    id: 1,
+    name: "A",
+  },
+  {
+    id: 2,
+    name: "B",
+  },
+  {
+    id: 3,
+    name: "C",
+  },
+  {
+    id: 4,
+    name: "D",
+  },
+];
+const required_value_Arr = [1, 3];
+const ans1 = arr.filter(
+  (elem) => elem.id == required_value_Arr[0] || elem.id == required_value_Arr[1]
+);
+console.log(ans1);
+
+//  task 2
+//   ===============first methord
+function isObjEqual(a, b) {
+  const x = JSON.stringify(a);
+  const y = JSON.stringify(b);
+
+  // return x === y;
+  return a === b;
+}
+
+function checker(array1, array2) {
+  const arr1 = [];
+  for (let element of array1) {
+    alert(element.id);
+    arr1.push(array2.filter((objInArr) => isObjEqual(objInArr.id, element.id)));
+  }
+  return arr1;
+}
+const arr1 = checker(pureArr, matchArr);
+console.log("ans2", arr1);
+//   ===============Second and better methord
+var result = matchArr.filter(function (obj) {
+  return pureArr.some(function (obj2) {
+    return obj.id == obj2.id;
+  });
+});
+console.log("try 2", result);
